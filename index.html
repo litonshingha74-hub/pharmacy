@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f7fb"><title>Medicare Pharmacy Management System</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap');
+:root{--bg:#f4f7fb;--card:#fff;--ink:#17243a;--muted:#718096;--line:#e6ecf3;--blue:#2563eb;--blue2:#1d4ed8;--green:#059669;--red:#e11d48;--amber:#d97706;--shadow:0 8px 28px rgba(25,45,80,.05)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,'Noto Sans Bengali',sans-serif;font-size:14px}button,input,select{font:inherit}button{cursor:pointer}.app{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:var(--card);border-right:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;z-index:10}.brand{display:flex;align-items:center;gap:11px;padding:0 9px 24px;border-bottom:1px solid var(--line);font-weight:800;font-size:17px}.logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,#3b82f6,#4338ca);display:grid;place-items:center;color:white;font-size:23px}.brand small{display:block;font-size:9px;letter-spacing:1.4px;color:#94a3b8;margin-top:3px}.nav-label{font-size:10px;color:#94a3b8;letter-spacing:1.5px;font-weight:800;margin:25px 10px 9px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;text-align:left;padding:12px;border-radius:11px;color:#64748b;font-weight:600;display:flex;gap:12px;align-items:center}.nav button:hover,.nav button.active{background:#edf4ff;color:#1d4ed8}.nav button span:first-child{width:20px;text-align:center}.side-foot{margin-top:auto;border-top:1px solid var(--line);padding:17px 8px 0;color:var(--muted);font-size:11px;line-height:1.7}.main{margin-left:250px}.topbar{height:72px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:sticky;top:0;z-index:5}.topbar h2{margin:0;font-size:18px}.top-actions{display:flex;gap:9px;align-items:center}.content{max-width:1500px;margin:auto;padding:27px 30px 45px}.page-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:22px}.page-head h1{font-size:25px;margin:0 0 5px}.sub{color:var(--muted);font-size:12px}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}.stat,.card{background:var(--card);border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow)}.stat{padding:18px}.stat .k{font-size:12px;color:var(--muted);font-weight:600}.stat .v{font-size:25px;font-weight:800;margin:12px 0 4px}.stat .hint{font-size:10px;color:var(--muted)}.card{padding:19px;margin-bottom:17px}.card h3{font-size:14px;margin:0 0 4px}.card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.btn{border:1px solid var(--line);background:white;color:#334155;border-radius:10px;padding:9px 13px;font-size:12px;font-weight:700}.btn.primary{background:var(--blue);color:white;border-color:var(--blue)}.btn.primary:hover{background:var(--blue2)}.btn.danger{color:var(--red);border-color:#fecdd3;background:#fff7f8}.btn.small{padding:6px 9px;font-size:11px}.field{display:grid;gap:6px;min-width:0}.field label{font-size:11px;font-weight:700;color:#64748b}.field input,.field select,.search{width:100%;border:1px solid #dce4ee;background:white;border-radius:9px;padding:10px 11px;color:var(--ink);outline:none}.field input:focus,.field select:focus,.search:focus{border-color:#60a5fa;box-shadow:0 0 0 3px #dbeafe}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.form-grid .full{grid-column:1/-1}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap}th{text-align:left;background:#f8fafc;color:#8290a3;font-size:10px;letter-spacing:.5px;padding:12px;font-weight:800}td{padding:12px;border-bottom:1px solid #edf1f6;font-size:12px}tbody tr:hover{background:#fafcff}.pill{display:inline-block;padding:4px 8px;border-radius:30px;font-size:10px;font-weight:800}.ok{background:#dcfce7;color:#15803d}.warn{background:#fef3c7;color:#a16207}.bad{background:#ffe4e6;color:#be123c}.blue{background:#dbeafe;color:#1d4ed8}.muted{color:var(--muted)}.hidden{display:none!important}.two{grid-template-columns:1.4fr 1fr}.alert{padding:11px 13px;border-radius:11px;font-size:12px;margin:8px 0}.alert.warning{background:#fffbeb;color:#92400e;border:1px solid #fde68a}.alert.danger{background:#fff1f2;color:#9f1239;border:1px solid #fecdd3}.empty{text-align:center;padding:30px;color:#94a3b8;font-size:12px}.modal-back{position:fixed;inset:0;background:#0f172a88;display:grid;place-items:center;padding:15px;z-index:30}.modal{background:white;border-radius:17px;padding:22px;width:min(570px,100%);max-height:90vh;overflow:auto;box-shadow:0 25px 80px #0f172a40}.modal h3{margin:0 0 17px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.notice{position:fixed;right:20px;bottom:20px;background:#17243a;color:white;padding:12px 16px;border-radius:11px;box-shadow:var(--shadow);z-index:50;font-size:12px}.quick{grid-template-columns:repeat(3,minmax(0,1fr))}.quick button{padding:15px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;font-weight:700;color:#334155}.quick button span{display:block;font-size:11px;color:#94a3b8;font-weight:400;margin-top:5px}.bar{height:9px;border-radius:9px;background:#edf2f7;overflow:hidden}.bar i{display:block;height:100%;background:#3b82f6;border-radius:9px}.footer{color:#94a3b8;font-size:10px;text-align:center;padding:15px}
+@media(max-width:1050px){.sidebar{width:215px}.main{margin-left:215px}.content{padding:22px 18px}.stats{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}
+@media(max-width:700px){.sidebar{position:static;width:auto;height:auto;padding:12px}.brand{padding:0 5px 12px}.nav-label,.side-foot{display:none}.nav{display:flex;overflow:auto;padding-top:10px}.nav button{white-space:nowrap;padding:9px 11px;font-size:11px}.main{margin:0}.topbar{height:58px;padding:0 15px}.topbar h2{font-size:15px}.content{padding:18px 12px}.page-head{align-items:flex-start;flex-direction:column}.stats{gap:9px}.stat{padding:13px}.stat .v{font-size:20px}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.quick{grid-template-columns:1fr}.card{padding:14px}}
+
+/* ===== 3D visual upgrade ===== */
+:root{--shadow:0 14px 32px rgba(22,48,91,.10)}
+body{background:radial-gradient(ellipse at 82% 0%,rgba(96,165,250,.16),transparent 34%),radial-gradient(ellipse at 4% 30%,rgba(129,140,248,.12),transparent 30%),#eef3fb}
+.sidebar{background:linear-gradient(165deg,#ffffff 0%,#f3f7ff 100%);box-shadow:8px 0 30px rgba(30,64,120,.07);border-right:1px solid rgba(255,255,255,.9)}
+.logo{background:linear-gradient(145deg,#60a5fa 0%,#2563eb 48%,#312e81 100%);box-shadow:inset 2px 2px 5px #ffffff70,inset -4px -5px 9px #17255470,0 8px 15px #2563eb55;transform:perspective(150px) rotateY(-10deg) rotateX(7deg)}
+.brand{letter-spacing:.1px}
+.nav button{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.nav button:hover{transform:translateX(4px) translateZ(8px);box-shadow:0 6px 14px rgba(37,99,235,.10)}
+.nav button.active{background:linear-gradient(110deg,#eaf2ff,#f4f0ff);box-shadow:inset 3px 0 #3b82f6,0 5px 13px rgba(37,99,235,.08)}
+.topbar{background:rgba(255,255,255,.78);box-shadow:0 8px 25px rgba(28,55,100,.06);border-bottom:1px solid rgba(255,255,255,.9)}
+.topbar h2{text-shadow:1px 2px 0 #dbeafe,2px 4px 8px rgba(30,64,175,.16)}
+.content{perspective:1200px}
+.page-head h1{letter-spacing:-.6px;text-shadow:1px 2px 0 #fff,2px 4px 0 #dbeafe,4px 8px 14px rgba(30,64,175,.13)}
+.stat,.card{border:1px solid rgba(255,255,255,.95);background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(245,249,255,.94));box-shadow:8px 10px 22px rgba(35,62,105,.075),-5px -5px 14px rgba(255,255,255,.9),inset 0 1px 0 #fff;transform:translateZ(0);transition:transform .25s ease,box-shadow .25s ease}
+.stat{position:relative;overflow:hidden}
+.stat:before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,#60a5fa,#6366f1,#22c55e);opacity:.85}
+.stat:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-38px;top:-45px;background:radial-gradient(circle,#dbeafeaa,transparent 70%);pointer-events:none}
+.stat:hover,.card:hover{transform:translateY(-4px) rotateX(1deg);box-shadow:12px 18px 30px rgba(35,62,105,.13),-5px -5px 14px rgba(255,255,255,.95)}
+.stat .v{background:linear-gradient(110deg,#172554,#2563eb 70%,#4f46e5);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 3px 10px rgba(37,99,235,.10)}
+.card{border-radius:19px}
+.btn{box-shadow:0 3px 0 #dbe3ee,0 5px 10px rgba(31,52,86,.06);transition:transform .16s ease,box-shadow .16s ease}
+.btn:active{transform:translateY(3px);box-shadow:0 0 0 transparent}
+.btn.primary{background:linear-gradient(135deg,#3b82f6,#1d4ed8 65%,#4338ca);box-shadow:0 4px 0 #1e40af,0 8px 16px rgba(37,99,235,.22);border-color:#2563eb}
+.btn.primary:hover{background:linear-gradient(135deg,#60a5fa,#2563eb 65%,#4f46e5);transform:translateY(-2px)}
+.quick button{background:linear-gradient(145deg,#fff,#f1f6ff);box-shadow:4px 5px 12px rgba(37,60,100,.07),inset 0 1px 0 #fff;transition:transform .2s ease,box-shadow .2s ease}
+.quick button:hover{transform:translateY(-4px) rotateX(2deg);box-shadow:8px 12px 18px rgba(37,60,100,.12)}
+.field input,.field select,.search{box-shadow:inset 2px 2px 5px rgba(40,60,90,.045),0 1px 0 #fff}
+th{background:linear-gradient(180deg,#f8fbff,#edf3fb)}
+tbody tr:hover{background:#f1f6ff}
+.pill{box-shadow:inset 0 1px 0 #ffffffaa}
+.modal{background:linear-gradient(145deg,#fff,#f4f7ff);box-shadow:0 30px 90px rgba(15,23,42,.28),inset 0 1px 0 #fff;border:1px solid #ffffffb0}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;transform:none!important}}
+@media(max-width:700px){.stat:hover,.card:hover,.quick button:hover{transform:none}}
+
+
+/* ===== FINAL COLOR SYSTEM: Navy / Cyan / Violet ===== */
+:root{
+  --ink:#14213d; --muted:#71809a; --blue:#2563eb; --blue2:#1d4ed8;
+  --shadow:0 14px 34px rgba(20,45,90,.10);
+}
+body{
+  background:
+    radial-gradient(ellipse at 90% 2%,rgba(34,211,238,.18),transparent 30%),
+    radial-gradient(ellipse at 3% 18%,rgba(139,92,246,.13),transparent 28%),
+    linear-gradient(135deg,#f4f7ff 0%,#eef6ff 52%,#f7f5ff 100%);
+}
+.sidebar{
+  color:#eef6ff;
+  background:linear-gradient(165deg,#101d46 0%,#172b60 58%,#263b83 100%);
+  border-right:1px solid #ffffff20;
+  box-shadow:10px 0 35px rgba(13,28,72,.20);
+}
+.brand{border-bottom-color:#ffffff20;color:#fff}
+.brand small{color:#a9c7f5}
+.logo{
+  background:linear-gradient(145deg,#22d3ee 0%,#3b82f6 48%,#7c3aed 100%);
+  box-shadow:inset 2px 2px 5px #ffffff80,inset -4px -5px 9px #17255480,0 9px 20px #22d3ee35;
+}
+.nav-label{color:#91a9dc}
+.nav button{color:#c3d2f0}
+.nav button:hover,.nav button.active{
+  color:#fff;
+  background:linear-gradient(100deg,#2563eb88,#7c3aed66);
+  box-shadow:inset 3px 0 #67e8f9,0 7px 18px #07153855;
+}
+.side-foot{border-top-color:#ffffff20;color:#a9bbdf}
+.topbar{
+  background:linear-gradient(100deg,rgba(255,255,255,.94),rgba(239,247,255,.92));
+  border-bottom:1px solid #dce8fb;
+  box-shadow:0 8px 25px rgba(28,55,100,.07);
+}
+.topbar h2{color:#182c5a;text-shadow:0 2px 0 #fff,0 5px 12px #2563eb20}
+.page-head h1{
+  color:#172b59;
+  text-shadow:0 2px 0 #fff,0 6px 14px rgba(37,99,235,.13);
+}
+.stat,.card{
+  border:1px solid rgba(255,255,255,.98);
+  background:linear-gradient(145deg,#fff 0%,#f6f9ff 100%);
+  box-shadow:8px 10px 25px rgba(31,57,105,.08),-4px -4px 14px #ffffffd9,inset 0 1px 0 #fff;
+}
+.stat:nth-child(1):before{background:linear-gradient(90deg,#06b6d4,#3b82f6)}
+.stat:nth-child(2):before{background:linear-gradient(90deg,#10b981,#06b6d4)}
+.stat:nth-child(3):before{background:linear-gradient(90deg,#8b5cf6,#6366f1)}
+.stat:nth-child(4):before{background:linear-gradient(90deg,#f59e0b,#ec4899)}
+.stat .v{
+  background:linear-gradient(110deg,#172554,#2563eb 62%,#7c3aed);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.card h3{color:#1c3264}
+.sub{color:#7889a8}
+.btn{border-color:#dce6f5;color:#31456f;background:linear-gradient(145deg,#fff,#f1f6ff)}
+.btn.primary{
+  color:#fff;border-color:#2563eb;
+  background:linear-gradient(120deg,#2563eb 0%,#4f46e5 58%,#7c3aed 100%);
+  box-shadow:0 4px 0 #263e9c,0 9px 18px rgba(59,91,219,.22);
+}
+.btn.primary:hover{background:linear-gradient(120deg,#0891b2,#2563eb 55%,#6d28d9)}
+.quick button{
+  min-height:100px;border:1px solid #ffffff70;border-radius:15px;color:#fff;
+  background:linear-gradient(135deg,#142b63 0%,#2455a5 58%,#2563eb 100%);
+  box-shadow:0 7px 0 #142d68,0 13px 22px rgba(30,64,140,.20),inset 0 1px 0 #ffffff55;
+  text-shadow:0 1px 2px #10224d55;
+}
+.quick button:nth-child(2){background:linear-gradient(135deg,#123e68,#087eaa 58%,#06b6d4);box-shadow:0 7px 0 #075477,0 13px 22px #0891b233,inset 0 1px 0 #ffffff55}
+.quick button:nth-child(3){background:linear-gradient(135deg,#38236f,#6341ad 58%,#8b5cf6);box-shadow:0 7px 0 #38266f,0 13px 22px #7c3aed33,inset 0 1px 0 #ffffff55}
+.quick button span{color:#d8eaff}
+.quick button:hover{transform:translateY(-4px);filter:brightness(1.08)}
+.field input:focus,.field select:focus,.search:focus{border-color:#22b8cf;box-shadow:0 0 0 3px #cffafe}
+th{background:linear-gradient(180deg,#eaf4ff,#e8eafe);color:#52688f}
+tbody tr:hover{background:#f0f7ff}
+.pill.blue{background:#e0eaff;color:#254db4}
+.pill.ok{background:#d9fbef;color:#087c5b}
+.pill.warn{background:#fff2cf;color:#9a6200}
+.pill.bad{background:#ffe2eb;color:#b42355}
+.alert.warning{background:linear-gradient(110deg,#fff8df,#fff1cc);border-color:#f6d98a}
+.alert.danger{background:linear-gradient(110deg,#fff0f4,#ffe4ed);border-color:#f6bfd0}
+.modal{border:1px solid #dce8fb;background:linear-gradient(145deg,#fff,#f3f7ff)}
+.notice{background:linear-gradient(110deg,#142b63,#2455a5,#4f46e5)}
+.footer{color:#8798b8}
+@media(max-width:700px){
+  .sidebar{background:linear-gradient(100deg,#101d46,#263b83);box-shadow:0 8px 22px #142b6330}
+  .nav button{color:#dce8ff}
+  .nav button.active{background:linear-gradient(100deg,#2563eb,#6d42c6)}
+  .quick button{min-height:78px}
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+ <div class="brand"><div class="logo">✚</div><div>মেডিকেয়ার<small>PHARMACY MANAGEMENT</small></div></div>
+ <div class="nav-label">WORKSPACE</div>
+ <nav class="nav" id="nav">
+  <button class="active" data-page="dashboard"><span>▦</span> ড্যাশবোর্ড</button>
+  <button data-page="products"><span>▣</span> পণ্য ও স্টক</button>
+  <button data-page="orders"><span>🛒</span> অর্ডার / বিক্রি</button>
+  <button data-page="purchases"><span>📦</span> পারচেজ</button>
+  <button data-page="expenses"><span>💸</span> দোকান ও অন্যান্য খরচ</button>
+  <button data-page="customers"><span>♙</span> কাস্টমার</button>
+  <button data-page="reports"><span>▤</span> রিপোর্ট</button>
+ </nav>
+ <div class="side-foot">Medicare Pharmacy<br>Local browser database · v2.0<br><span id="storageStatus">ডেটা এই ব্রাউজারে সংরক্ষিত</span></div>
+</aside>
+<main class="main">
+<header class="topbar"><h2 id="topTitle">ড্যাশবোর্ড</h2><div class="top-actions"><span class="pill ok">● সিস্টেম প্রস্তুত</span><button class="btn" onclick="backupData()">ডেটা ব্যাকআপ</button></div></header>
+<div class="content">
+<section id="page-dashboard" class="page">
+ <div class="page-head"><div><h1>শুভেচ্ছা! 👋</h1><div class="sub" id="todayLabel"></div></div><button class="btn primary" onclick="openOrder()">＋ নতুন বিক্রি</button></div>
+ <div class="card"><div class="row" style="justify-content:space-between;align-items:end;gap:16px"><div><h3>সময় অনুযায়ী হিসাব দেখুন</h3><div class="sub">নিজে তারিখ ও সপ্তাহ নির্বাচন করুন</div></div><div class="row" style="gap:12px;flex:1;justify-content:flex-end"><div class="field" style="width:min(220px,100%)"><label for="dashDate">দৈনিক হিসাবের তারিখ</label><input id="dashDate" type="date" class="search" onchange="renderDashboard()"></div><div class="field" style="width:min(220px,100%)"><label for="dashWeek">সাপ্তাহিক হিসাবের সপ্তাহ</label><input id="dashWeek" type="week" class="search" onchange="renderDashboard()"></div><button class="btn" onclick="resetDashDates()">আজ / এই সপ্তাহ</button></div></div></div>
+ <div class="grid stats">
+  <div class="stat"><div class="k">আজকের বিক্রি</div><div class="v" id="dashSales">৳০</div><div class="hint">আজকের সম্পন্ন অর্ডার</div></div>
+  <div class="stat"><div class="k">আজকের আনুমানিক লাভ</div><div class="v" id="dashProfit">৳০</div><div class="hint">বিক্রি − পণ্যের ক্রয়মূল্য − আজকের দোকান খরচ</div></div>
+  <div class="stat"><div class="k">মোট অর্ডার</div><div class="v" id="dashOrders">০</div><div class="hint">সর্বমোট অর্ডার</div></div>
+  <div class="stat"><div class="k">পণ্যের সংখ্যা</div><div class="v" id="dashProducts">০</div><div class="hint">বর্তমান ক্যাটালগ</div></div>
+ </div>
+ <div class="card"><div class="card-head"><div><h3>নির্বাচিত সপ্তাহের সারসংক্ষেপ</h3><div class="sub" id="dashWeekLabel">সপ্তাহের হিসাব</div></div></div><div class="grid stats" style="grid-template-columns:repeat(3,minmax(0,1fr));margin:0"><div class="stat"><div class="k">সপ্তাহের মোট বিক্রি</div><div class="v" id="dashWeekSales">৳০</div></div><div class="stat"><div class="k">সপ্তাহের অর্ডার</div><div class="v" id="dashWeekOrders">০</div></div><div class="stat"><div class="k">সপ্তাহের নিট লাভ</div><div class="v" id="dashWeekProfit">৳০</div></div></div></div>
+ <div class="grid two">
+  <div class="card"><div class="card-head"><div><h3>দ্রুত কাজ</h3><div class="sub">দৈনন্দিন কাজ এক ক্লিকে</div></div></div><div class="grid quick">
+   <button onclick="openProduct()">＋ পণ্য যোগ<span>নতুন মেডিসিন যুক্ত করুন</span></button>
+   <button onclick="openOrder()">＋ বিক্রি তৈরি<span>অর্ডার ও স্টক আপডেট</span></button>
+   <button onclick="openPurchase()">＋ পারচেজ এন্ট্রি<span>স্টক ও ক্রয় খরচ বাড়ান</span></button>
+   <button onclick="openExpense()">＋ খরচ যোগ<span>ভাড়া, বেতন, বিদ্যুৎ ইত্যাদি</span></button>
+  </div></div>
+  <div class="card"><div class="card-head"><div><h3>স্টক সতর্কতা</h3><div class="sub">কম স্টক ও মেয়াদ সংক্রান্ত সতর্কতা</div></div><button class="btn small" onclick="go('products')">পণ্য দেখুন</button></div><div id="dashAlerts"></div></div>
+ </div>
+ <div class="card"><div class="card-head"><div><h3>সাম্প্রতিক বিক্রি</h3><div class="sub">সর্বশেষ ৫টি অর্ডার</div></div><button class="btn small" onclick="go('orders')">সব অর্ডার</button></div><div id="recentOrders"></div></div>
+</section>
+
+<section id="page-products" class="page hidden">
+ <div class="page-head"><div><h1>পণ্য ও স্টক</h1><div class="sub">ওষুধের তথ্য, মজুত, মেয়াদ ও মূল্য পরিচালনা করুন</div></div><button class="btn primary" onclick="openProduct()">＋ নতুন পণ্য</button></div>
+ <div class="grid stats">
+  <div class="stat"><div class="k">মোট পণ্য</div><div class="v" id="prodCount">০</div></div>
+  <div class="stat"><div class="k">কম স্টক</div><div class="v" id="lowCount">০</div></div>
+  <div class="stat"><div class="k">মেয়াদোত্তীর্ণ</div><div class="v" id="expiredCount">০</div></div>
+  <div class="stat"><div class="k">৩০ দিনের মধ্যে মেয়াদ</div><div class="v" id="soonCount">০</div></div>
+ </div>
+ <div class="card"><div class="card-head"><div><h3>পণ্যের তালিকা</h3><div class="sub">পণ্য যোগ, সম্পাদনা বা মুছে ফেলুন</div></div><input class="search" style="max-width:240px" id="productSearch" placeholder="পণ্য খুঁজুন..." oninput="renderProducts()"></div><div id="productTable"></div></div>
+</section>
+
+<section id="page-orders" class="page hidden">
+ <div class="page-head"><div><h1>অর্ডার ও বিক্রি</h1><div class="sub">নতুন বিক্রি রেকর্ড করুন; বিক্রির সঙ্গে স্টক কমবে</div></div><button class="btn primary" onclick="openOrder()">＋ নতুন অর্ডার</button></div>
+ <div class="card"><div class="card-head"><div><h3>অর্ডার হিস্ট্রি</h3><div class="sub">সকল বিক্রির রেকর্ড</div></div><input class="search" style="max-width:240px" id="orderSearch" placeholder="অর্ডার/কাস্টমার খুঁজুন..." oninput="renderOrders()"></div><div id="orderTable"></div></div>
+</section>
+
+<section id="page-purchases" class="page hidden">
+ <div class="page-head"><div><h1>পারচেজ ম্যানেজমেন্ট</h1><div class="sub">সাপ্লায়ার থেকে পণ্য কেনা ও স্টক বাড়ানোর হিসাব</div></div><button class="btn primary" onclick="openPurchase()">＋ নতুন পারচেজ</button></div>
+ <div class="card"><div class="card-head"><div><h3>পারচেজ হিস্ট্রি</h3><div class="sub">পণ্য ক্রয়ের রেকর্ড</div></div></div><div id="purchaseTable"></div></div>
+</section>
+
+<section id="page-expenses" class="page hidden">
+ <div class="page-head"><div><h1>দোকান ও অন্যান্য খরচ</h1><div class="sub">দোকান ভাড়া, কর্মচারীর বেতন, বিদ্যুৎ, পানি, ইন্টারনেট, পরিবহন ও অন্যান্য খরচের হিসাব</div></div><button class="btn primary" onclick="openExpense()">＋ নতুন খরচ</button></div>
+ <div class="grid stats"><div class="stat"><div class="k">আজকের খরচ</div><div class="v" id="expenseToday">৳০</div></div><div class="stat"><div class="k">এই মাসের খরচ</div><div class="v" id="expenseMonth">৳০</div></div><div class="stat"><div class="k">মোট খরচের এন্ট্রি</div><div class="v" id="expenseCount">০</div></div><div class="stat"><div class="k">সব সময়ের মোট খরচ</div><div class="v" id="expenseAll">৳০</div></div></div>
+ <div class="card"><div class="card-head"><div><h3>খরচের হিস্ট্রি</h3><div class="sub">প্রতিটি খরচের তারিখ, ধরন ও পরিমাণ</div></div><input class="search" style="max-width:240px" id="expenseSearch" placeholder="খরচের ধরন/বিবরণ খুঁজুন..." oninput="renderExpenses()"></div><div id="expenseTable"></div></div>
+</section>
+
+<section id="page-customers" class="page hidden">
+ <div class="page-head"><div><h1>কাস্টমার ম্যানেজমেন্ট</h1><div class="sub">কাস্টমারের যোগাযোগের তথ্য সংরক্ষণ করুন</div></div><button class="btn primary" onclick="openCustomer()">＋ নতুন কাস্টমার</button></div>
+ <div class="card"><div class="card-head"><div><h3>কাস্টমার তালিকা</h3><div class="sub">নতুন কাস্টমার যোগ, সম্পাদনা ও মুছে ফেলুন</div></div><input class="search" style="max-width:240px" id="customerSearch" placeholder="নাম/মোবাইল খুঁজুন..." oninput="renderCustomers()"></div><div id="customerTable"></div></div>
+</section>
+
+<section id="page-reports" class="page hidden">
+ <div class="page-head"><div><h1>রিপোর্ট ও অ্যানালিটিক্স</h1><div class="sub">নির্বাচিত সময়ের বিক্রি, পণ্যের খরচ, দোকান খরচ ও নিট লাভ-ক্ষতি</div></div><button class="btn" onclick="exportCSV()">↓ CSV রিপোর্ট</button></div>
+ <div class="card"><div class="row" style="justify-content:space-between;margin-bottom:16px"><div><h3>লাভ-ক্ষতির সারসংক্ষেপ</h3><div class="sub">ডেটাবেসে থাকা রেকর্ডের ভিত্তিতে হিসাব</div></div><div class="row"><select id="reportMode" class="search" style="width:auto" onchange="renderReports()"><option value="day">দৈনিক</option><option value="month">মাসিক</option></select><input id="reportDate" type="date" class="search" style="width:auto" onchange="renderReports()"></div></div>
+ <div class="grid stats" style="grid-template-columns:repeat(auto-fit,minmax(155px,1fr))"><div class="stat"><div class="k">মোট বিক্রি</div><div class="v" id="rSales">৳০</div></div><div class="stat"><div class="k">বিক্রিত পণ্যের ক্রয়মূল্য</div><div class="v" id="rCogs">৳০</div></div><div class="stat"><div class="k">পারচেজ এন্ট্রি</div><div class="v" id="rPurchase">৳০</div></div><div class="stat"><div class="k">গ্রস প্রফিট</div><div class="v" id="rProfit">৳০</div></div><div class="stat"><div class="k">দোকান ও অন্যান্য খরচ</div><div class="v" id="rExpenses">৳০</div></div><div class="stat"><div class="k">নিট লাভ / ক্ষতি</div><div class="v" id="rNetProfit">৳০</div></div></div>
+ <div class="sub" id="reportNote"></div></div>
+ <div class="card"><h3>হিসাব বোঝার নিয়ম</h3><p class="sub" style="line-height:1.8">গ্রস প্রফিট = সম্পন্ন বিক্রির মোট মূল্য − বিক্রিত পণ্যের ক্রয়মূল্য (COGS)। নিট লাভ / ক্ষতি = গ্রস প্রফিট − দোকান ও অন্যান্য অপারেটিং খরচ। পারচেজ এন্ট্রি স্টক কেনার রেকর্ড হিসেবে আলাদা দেখানো হয়; একই পণ্যের ক্রয়মূল্য COGS-এ থাকায় পারচেজের মোট টাকা আবার লাভ থেকে বাদ দেওয়া হয় না।</p></div>
+</section>
+<div class="footer">© <span id="year"></span> Medicare Pharmacy · ডেটা এই ব্রাউজারের Local Storage-এ সংরক্ষিত</div>
+</div></main></div>
+<div id="modalRoot"></div><div id="toast" class="notice hidden"></div>
+<script>
+const KEY='medicare_pharmacy_v2';
+const today=()=>new Date().toISOString().slice(0,10);
+const money=n=>'৳'+Number(n||0).toLocaleString('en-BD',{maximumFractionDigits:2});
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=prefix=>prefix+'-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,5).toUpperCase();
+function seed(){return {products:[
+{id:'P-1001',name:'Napa 500mg',company:'Beximco',category:'Tablet',stock:65,min:30,cost:0.65,price:1,expiry:'2027-08-31'},
+{id:'P-1002',name:'Seclo 20mg',company:'Square',category:'Capsule',stock:8,min:20,cost:5,price:7,expiry:'2027-03-31'},
+{id:'P-1003',name:'Monas 10mg',company:'Acme',category:'Tablet',stock:48,min:15,cost:4,price:5,expiry:'2026-12-15'},
+{id:'P-1004',name:'Sergel 20mg',company:'Healthcare',category:'Capsule',stock:6,min:15,cost:5.5,price:7,expiry:'2026-12-05'},
+{id:'P-1005',name:'Ceevit 250mg',company:'Incepta',category:'Tablet',stock:10,min:25,cost:2.5,price:3.5,expiry:'2027-06-30'}
+],customers:[{id:'C-1001',name:'সুমাইয়া আক্তার',phone:'01700000001',address:'পাঁচলাইশ, চট্টগ্রাম'},{id:'C-1002',name:'মোঃ রাকিব হাসান',phone:'01800000002',address:'খুলশী, চট্টগ্রাম'}],orders:[],purchases:[],expenses:[]}}
+let db;
+try{db=JSON.parse(localStorage.getItem(KEY))||seed()}catch(e){db=seed()}
+db.expenses=db.expenses||[];
+function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),2600)}
+function go(page){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById('page-'+page).classList.remove('hidden');document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.getElementById('topTitle').textContent=({dashboard:'ড্যাশবোর্ড',products:'পণ্য ও স্টক',orders:'অর্ডার ও বিক্রি',purchases:'পারচেজ ম্যানেজমেন্ট',expenses:'দোকান ও অন্যান্য খরচ',customers:'কাস্টমার ম্যানেজমেন্ট',reports:'রিপোর্ট ও অ্যানালিটিক্স'})[page];if(page==='reports')renderReports()}
+document.getElementById('nav').addEventListener('click',e=>{const b=e.target.closest('button[data-page]');if(b)go(b.dataset.page)});
+function modal(title,body){document.getElementById('modalRoot').innerHTML=`<div class="modal-back" onclick="if(event.target===this)closeModal()"><div class="modal"><h3>${title}</h3>${body}</div></div>`}
+function closeModal(){document.getElementById('modalRoot').innerHTML=''}
+function field(label,name,value='',type='text',required=true,extra=''){return `<div class="field"><label>${label}</label><input name="${name}" type="${type}" value="${esc(value)}" ${required?'required':''} ${extra}></div>`}
+function productForm(p={}){modal(p.id?'পণ্য সম্পাদনা':'নতুন পণ্য যোগ',`<form id="productForm" class="form-grid">${field('পণ্যের নাম','name',p.name||'')}${field('কোম্পানি / ব্র্যান্ড','company',p.company||'')}${field('ক্যাটাগরি','category',p.category||'Tablet')}${field('বর্তমান স্টক','stock',p.stock??0,'number',true,'min="0" step="1"')}${field('সর্বনিম্ন স্টক সতর্কতা','min',p.min??10,'number',true,'min="0"')}${field('ক্রয়মূল্য (প্রতি ইউনিট)','cost',p.cost??0,'number',true,'min="0" step="0.01"')}${field('বিক্রয়মূল্য (প্রতি ইউনিট)','price',p.price??0,'number',true,'min="0" step="0.01"')}${field('মেয়াদ শেষের তারিখ','expiry',p.expiry||'','date',false)}<div class="full modal-actions"><button type="button" class="btn" onclick="closeModal()">বাতিল</button><button class="btn primary">সংরক্ষণ করুন</button></div></form>`);
+document.getElementById('productForm').onsubmit=e=>{e.preventDefault();const f=Object.fromEntries(new FormData(e.target));const obj={...p,...f,id:p.id||uid('P'),stock:+f.stock,min:+f.min,cost:+f.cost,price:+f.price};if(p.id)db.products=db.products.map(x=>x.id===p.id?obj:x);else db.products.push(obj);closeModal();save();toast('পণ্যের তথ্য সংরক্ষিত হয়েছে')}}
+function openProduct(id){const p=db.products.find(x=>x.id===id);productForm(p||{})}
+function delProduct(id){if(!confirm('এই পণ্যটি মুছে ফেলবেন? পুরোনো অর্ডারের হিসাব অক্ষত থাকবে।'))return;db.products=db.products.filter(p=>p.id!==id);save();toast('পণ্য মুছে ফেলা হয়েছে')}
+function renderProducts(){const q=(document.getElementById('productSearch')?.value||'').toLowerCase();const rows=db.products.filter(p=>(p.name+' '+p.company).toLowerCase().includes(q));document.getElementById('prodCount').textContent=db.products.length;document.getElementById('lowCount').textContent=db.products.filter(p=>+p.stock<=+p.min).length;document.getElementById('expiredCount').textContent=db.products.filter(p=>p.expiry&&p.expiry<today()).length;document.getElementById('soonCount').textContent=db.products.filter(p=>daysTo(p.expiry)>=0&&daysTo(p.expiry)<=30).length;document.getElementById('productTable').innerHTML=rows.length?`<div class="table-wrap"><table><thead><tr><th>পণ্য</th><th>কোম্পানি</th><th>স্টক</th><th>ক্রয়</th><th>বিক্রয়</th><th>মেয়াদ</th><th>অবস্থা</th><th>অ্যাকশন</th></tr></thead><tbody>${rows.map(p=>`<tr><td><b>${esc(p.name)}</b><div class="muted">${esc(p.category)}</div></td><td>${esc(p.company)}</td><td><b>${p.stock}</b></td><td>${money(p.cost)}</td><td>${money(p.price)}</td><td>${p.expiry||'—'}</td><td>${productStatus(p)}</td><td><button class="btn small" onclick="openProduct('${p.id}')">Edit</button> <button class="btn small danger" onclick="delProduct('${p.id}')">Delete</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">কোনো পণ্য পাওয়া যায়নি</div>'}
+function daysTo(d){if(!d)return Infinity;return Math.ceil((new Date(d+'T00:00:00')-new Date(today()+'T00:00:00'))/86400000)}
+function productStatus(p){const d=daysTo(p.expiry);if(p.expiry&&d<0)return '<span class="pill bad">মেয়াদোত্তীর্ণ</span>';if(p.expiry&&d<=30)return '<span class="pill warn">মেয়াদ নিকটবর্তী</span>';if(+p.stock<=+p.min)return '<span class="pill warn">কম স্টক</span>';return '<span class="pill ok">স্বাভাবিক</span>'}
+function openOrder(){if(!db.products.length){toast('আগে পণ্য যোগ করুন');return}const opts=db.products.map(p=>`<option value="${p.id}">${esc(p.name)} · স্টক ${p.stock} · ${money(p.price)}</option>`).join('');const custOpts='<option value="">Walk-in Customer</option>'+db.customers.map(c=>`<option value="${c.id}">${esc(c.name)} (${esc(c.phone)})</option>`).join('');modal('নতুন বিক্রি / অর্ডার',`<form id="orderForm"><div class="form-grid"><div class="field"><label>কাস্টমার</label><select name="customer">${custOpts}</select></div>${field('তারিখ','date',today(),'date')}<div class="field full"><label>পণ্য</label><select name="product" required>${opts}</select></div>${field('পরিমাণ','qty',1,'number',true,'min="1" step="1"')}${field('ছাড় (টাকা)','discount',0,'number',true,'min="0" step="0.01"')}</div><div class="alert warning" id="orderPreview">পণ্য নির্বাচন করলে মোট মূল্য দেখাবে। স্টক বিক্রির সময় কমে যাবে।</div><div class="modal-actions"><button type="button" class="btn" onclick="closeModal()">বাতিল</button><button class="btn primary">বিক্রি সম্পন্ন করুন</button></div></form>`);
+const form=document.getElementById('orderForm');const update=()=>{const p=db.products.find(x=>x.id===form.product.value);const qty=+form.qty.value||0;document.getElementById('orderPreview').textContent=`একক মূল্য ${money(p?.price)} × ${qty} − ছাড় ${money(form.discount.value)} = মোট ${money(Math.max(0,(p?.price||0)*qty-(+form.discount.value||0)))} · বর্তমান স্টক ${p?.stock??0}`};form.onchange=update;form.oninput=update;update();
+form.onsubmit=e=>{e.preventDefault();const f=Object.fromEntries(new FormData(form));const p=db.products.find(x=>x.id===f.product),qty=+f.qty,discount=+f.discount;if(!p||qty<1||!Number.isInteger(qty))return toast('সঠিক পরিমাণ দিন');if(qty>p.stock)return toast('পর্যাপ্ত স্টক নেই');const total=p.price*qty-discount;if(discount<0||total<0)return toast('ছাড়ের পরিমাণ সঠিক নয়');p.stock-=qty;const c=db.customers.find(x=>x.id===f.customer);db.orders.unshift({id:uid('ORD'),date:f.date,customerId:f.customer,customer:c?.name||'Walk-in Customer',productId:p.id,product:p.name,qty,unitPrice:p.price,unitCost:p.cost,discount,total,cogs:p.cost*qty});closeModal();save();toast('বিক্রি সম্পন্ন; স্টক আপডেট হয়েছে')}}
+function renderOrders(){const q=(document.getElementById('orderSearch')?.value||'').toLowerCase();const rows=db.orders.filter(o=>(o.id+o.customer+o.product).toLowerCase().includes(q));document.getElementById('orderTable').innerHTML=rows.length?`<div class="table-wrap"><table><thead><tr><th>অর্ডার আইডি</th><th>তারিখ</th><th>কাস্টমার</th><th>পণ্য</th><th>পরিমাণ</th><th>বিক্রি</th><th>গ্রস প্রফিট</th></tr></thead><tbody>${rows.map(o=>`<tr><td><b>${o.id}</b></td><td>${o.date}</td><td>${esc(o.customer)}</td><td>${esc(o.product)}</td><td>${o.qty}</td><td>${money(o.total)}</td><td><span class="pill ok">${money(o.total-o.cogs)}</span></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">এখনো কোনো অর্ডার নেই</div>'}
+function openPurchase(){if(!db.products.length){toast('আগে পণ্য যোগ করুন');return}const opts=db.products.map(p=>`<option value="${p.id}">${esc(p.name)} · বর্তমান স্টক ${p.stock}</option>`).join('');modal('নতুন পারচেজ এন্ট্রি',`<form id="purchaseForm" class="form-grid"><div class="field full"><label>পণ্য</label><select name="product">${opts}</select></div>${field('সাপ্লায়ার','supplier','')}${field('তারিখ','date',today(),'date')}${field('পরিমাণ','qty',1,'number',true,'min="1" step="1"')}${field('প্রতি ইউনিট ক্রয়মূল্য','cost',0,'number',true,'min="0" step="0.01"')}${field('নতুন ব্যাচের মেয়াদ','expiry','','date',false)}<div class="full modal-actions"><button type="button" class="btn" onclick="closeModal()">বাতিল</button><button class="btn primary">পারচেজ সংরক্ষণ</button></div></form>`);
+document.getElementById('purchaseForm').onsubmit=e=>{e.preventDefault();const f=Object.fromEntries(new FormData(e.target)),p=db.products.find(x=>x.id===f.product),qty=+f.qty,cost=+f.cost;if(qty<1||!Number.isInteger(qty)||cost<0)return toast('সঠিক পরিমাণ ও মূল্য দিন');p.stock+=qty;p.cost=cost;if(f.expiry)p.expiry=f.expiry;db.purchases.unshift({id:uid('PUR'),date:f.date,productId:p.id,product:p.name,supplier:f.supplier,qty,cost,total:qty*cost});closeModal();save();toast('পারচেজ সংরক্ষিত; স্টক বেড়েছে')}}
+function renderPurchases(){document.getElementById('purchaseTable').innerHTML=db.purchases.length?`<div class="table-wrap"><table><thead><tr><th>পারচেজ আইডি</th><th>তারিখ</th><th>পণ্য</th><th>সাপ্লায়ার</th><th>পরিমাণ</th><th>ইউনিট কস্ট</th><th>মোট</th></tr></thead><tbody>${db.purchases.map(p=>`<tr><td><b>${p.id}</b></td><td>${p.date}</td><td>${esc(p.product)}</td><td>${esc(p.supplier||'—')}</td><td>${p.qty}</td><td>${money(p.cost)}</td><td><b>${money(p.total)}</b></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">এখনো কোনো পারচেজ রেকর্ড নেই</div>'}
+function openExpense(){
+ const cats=['দোকান ভাড়া','কর্মচারীর বেতন','বিদ্যুৎ বিল','পানি বিল','ইন্টারনেট / ফোন বিল','পরিবহন / ডেলিভারি','মেরামত ও রক্ষণাবেক্ষণ','লাইসেন্স / ফি','অন্যান্য'];
+ const opts=cats.map(c=>`<option>${c}</option>`).join('');
+ modal('নতুন দোকান / অন্যান্য খরচ',`<form id="expenseForm" class="form-grid"><div class="field"><label>খরচের ধরন</label><select name="category">${opts}</select></div>${field('তারিখ','date',today(),'date')}${field('টাকার পরিমাণ (৳)','amount',0,'number',true,'min="0.01" step="0.01"')}${field('বিবরণ / কাকে দিয়েছেন','description','', 'text',false)}<div class="field full"><label>নোট (ঐচ্ছিক)</label><input name="note" placeholder="যেমন: নভেম্বর মাসের দোকান ভাড়া"></div><div class="full modal-actions"><button type="button" class="btn" onclick="closeModal()">বাতিল</button><button class="btn primary">খরচ সংরক্ষণ</button></div></form>`);
+ document.getElementById('expenseForm').onsubmit=e=>{e.preventDefault();const f=Object.fromEntries(new FormData(e.target));const amount=+f.amount;if(!(amount>0))return toast('সঠিক খরচের পরিমাণ দিন');db.expenses.unshift({id:uid('EXP'),...f,amount});closeModal();save();toast('খরচের হিসাব সংরক্ষিত হয়েছে')};
+}
+function deleteExpense(id){if(!confirm('এই খরচের রেকর্ড মুছে ফেলবেন?'))return;db.expenses=db.expenses.filter(x=>x.id!==id);save();toast('খরচের রেকর্ড মুছে ফেলা হয়েছে')}
+function renderExpenses(){
+ const q=(document.getElementById('expenseSearch')?.value||'').toLowerCase();
+ const rows=db.expenses.filter(x=>(x.category+' '+(x.description||'')+' '+(x.note||'')).toLowerCase().includes(q));
+ const t=today(),m=t.slice(0,7);const sum=a=>a.reduce((v,x)=>v+(+x.amount||0),0);
+ document.getElementById('expenseToday').textContent=money(sum(db.expenses.filter(x=>x.date===t)));
+ document.getElementById('expenseMonth').textContent=money(sum(db.expenses.filter(x=>(x.date||'').startsWith(m))));
+ document.getElementById('expenseCount').textContent=db.expenses.length.toLocaleString('en-BD');
+ document.getElementById('expenseAll').textContent=money(sum(db.expenses));
+ document.getElementById('expenseTable').innerHTML=rows.length?`<div class="table-wrap"><table><thead><tr><th>তারিখ</th><th>খরচের ধরন</th><th>বিবরণ</th><th>নোট</th><th>পরিমাণ</th><th>অ্যাকশন</th></tr></thead><tbody>${rows.map(x=>`<tr><td>${esc(x.date)}</td><td><span class="pill blue">${esc(x.category)}</span></td><td>${esc(x.description||'—')}</td><td>${esc(x.note||'—')}</td><td><b>${money(x.amount)}</b></td><td><button class="btn small danger" onclick="deleteExpense('${x.id}')">Delete</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">এখনো কোনো খরচের রেকর্ড নেই। নতুন খরচ যোগ করুন।</div>';
+}
+function customerForm(c={}){modal(c.id?'কাস্টমার সম্পাদনা':'নতুন কাস্টমার',`<form id="customerForm" class="form-grid">${field('কাস্টমারের নাম','name',c.name||'')}${field('মোবাইল নম্বর','phone',c.phone||'','tel') }<div class="field full"><label>ঠিকানা</label><input name="address" value="${esc(c.address||'')}"></div><div class="full modal-actions"><button type="button" class="btn" onclick="closeModal()">বাতিল</button><button class="btn primary">সংরক্ষণ</button></div></form>`);document.getElementById('customerForm').onsubmit=e=>{e.preventDefault();const f=Object.fromEntries(new FormData(e.target));if(c.id)db.customers=db.customers.map(x=>x.id===c.id?{...c,...f}:x);else db.customers.push({id:uid('C'),...f});closeModal();save();toast('কাস্টমার সংরক্ষিত হয়েছে')}}
+function openCustomer(id){customerForm(db.customers.find(c=>c.id===id)||{})}
+function delCustomer(id){if(!confirm('কাস্টমার মুছে ফেলবেন? পুরোনো অর্ডার থাকবে।'))return;db.customers=db.customers.filter(c=>c.id!==id);save()}
+function renderCustomers(){const q=(document.getElementById('customerSearch')?.value||'').toLowerCase();const rows=db.customers.filter(c=>(c.name+c.phone+c.address).toLowerCase().includes(q));document.getElementById('customerTable').innerHTML=rows.length?`<div class="table-wrap"><table><thead><tr><th>নাম</th><th>মোবাইল</th><th>ঠিকানা</th><th>মোট অর্ডার</th><th>মোট কেনাকাটা</th><th>অ্যাকশন</th></tr></thead><tbody>${rows.map(c=>{const os=db.orders.filter(o=>o.customerId===c.id);return `<tr><td><b>${esc(c.name)}</b></td><td>${esc(c.phone)}</td><td>${esc(c.address)}</td><td>${os.length}</td><td>${money(os.reduce((s,o)=>s+o.total,0))}</td><td><button class="btn small" onclick="openCustomer('${c.id}')">Edit</button> <button class="btn small danger" onclick="delCustomer('${c.id}')">Delete</button></td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty">কোনো কাস্টমার নেই</div>'}
+function weekBounds(weekValue){const [y,w]=weekValue.split('-W').map(Number);const jan4=new Date(y,0,4);const monday=new Date(jan4);monday.setDate(jan4.getDate()-((jan4.getDay()+6)%7)+(w-1)*7);const sunday=new Date(monday);sunday.setDate(monday.getDate()+6);const fmt=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;return [fmt(monday),fmt(sunday)]}
+function currentWeekValue(d=new Date()){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-((x.getDay()+6)%7)+3);const y=x.getFullYear(),first=new Date(y,0,4);const week=1+Math.round(((x-first)/86400000-((first.getDay()+6)%7)+3)/7);return `${y}-W${String(week).padStart(2,'0')}`}
+function resetDashDates(){document.getElementById('dashDate').value=today();document.getElementById('dashWeek').value=currentWeekValue();renderDashboard()}
+function renderDashboard(){const selected=document.getElementById('dashDate')?.value||today(),dailyOrders=db.orders.filter(o=>o.date===selected),dailyExpenses=db.expenses.filter(x=>x.date===selected),dailySales=dailyOrders.reduce((s,o)=>s+o.total,0),dailyProfit=dailyOrders.reduce((s,o)=>s+o.total-o.cogs,0)-dailyExpenses.reduce((s,x)=>s+(+x.amount||0),0);document.getElementById('dashSales').textContent=money(dailySales);document.getElementById('dashProfit').textContent=money(dailyProfit);document.getElementById('dashOrders').textContent=dailyOrders.length;document.getElementById('dashProducts').textContent=db.products.length;const [weekStart,weekEnd]=weekBounds(document.getElementById('dashWeek')?.value||currentWeekValue());const weekOrders=db.orders.filter(o=>o.date>=weekStart&&o.date<=weekEnd),weekExpenses=db.expenses.filter(x=>x.date>=weekStart&&x.date<=weekEnd),weekSales=weekOrders.reduce((s,o)=>s+o.total,0),weekProfit=weekOrders.reduce((s,o)=>s+o.total-o.cogs,0)-weekExpenses.reduce((s,x)=>s+(+x.amount||0),0);document.getElementById('dashWeekSales').textContent=money(weekSales);document.getElementById('dashWeekOrders').textContent=weekOrders.length;document.getElementById('dashWeekProfit').textContent=money(weekProfit);document.getElementById('dashWeekLabel').textContent=`${weekStart} থেকে ${weekEnd}`;const alerts=db.products.filter(p=>+p.stock<=+p.min|| (p.expiry&&daysTo(p.expiry)<=30));document.getElementById('dashAlerts').innerHTML=alerts.length?alerts.slice(0,7).map(p=>`<div class="alert ${p.expiry&&daysTo(p.expiry)<0?'danger':'warning'}">${esc(p.name)} — ${p.expiry&&daysTo(p.expiry)<0?'মেয়াদোত্তীর্ণ':p.expiry&&daysTo(p.expiry)<=30?'মেয়াদ: '+p.expiry:'স্টক মাত্র '+p.stock}</div>`).join(''):'<div class="alert" style="background:#ecfdf5;color:#047857">কোনো জরুরি সতর্কতা নেই।</div>';const recent=db.orders.slice(0,5);document.getElementById('recentOrders').innerHTML=recent.length?`<div class="table-wrap"><table><thead><tr><th>অর্ডার</th><th>কাস্টমার</th><th>পণ্য</th><th>তারিখ</th><th>মোট</th></tr></thead><tbody>${recent.map(o=>`<tr><td>${o.id}</td><td>${esc(o.customer)}</td><td>${esc(o.product)} × ${o.qty}</td><td>${o.date}</td><td><b>${money(o.total)}</b></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">এখনো বিক্রির তথ্য নেই। নতুন বিক্রি দিয়ে শুরু করুন।</div>'}
+function renderReports(){const mode=document.getElementById('reportMode').value,date=document.getElementById('reportDate').value||today(),key=mode==='month'?date.slice(0,7):date,match=d=>mode==='month'?(d||'').startsWith(key):d===key;const os=db.orders.filter(o=>match(o.date)),ps=db.purchases.filter(p=>match(p.date)),es=db.expenses.filter(x=>match(x.date));const sales=os.reduce((s,o)=>s+o.total,0),cogs=os.reduce((s,o)=>s+o.cogs,0),purchase=ps.reduce((s,p)=>s+p.total,0),expense=es.reduce((s,x)=>s+(+x.amount||0),0),gross=sales-cogs,net=gross-expense;document.getElementById('rSales').textContent=money(sales);document.getElementById('rCogs').textContent=money(cogs);document.getElementById('rPurchase').textContent=money(purchase);document.getElementById('rProfit').textContent=money(gross);document.getElementById('rExpenses').textContent=money(expense);document.getElementById('rNetProfit').textContent=money(net);document.getElementById('reportNote').textContent=`${mode==='month'?'মাস':'তারিখ'}: ${key} · ${os.length}টি বিক্রির রেকর্ড · ${ps.length}টি পারচেজ রেকর্ড · ${es.length}টি খরচের রেকর্ড।`;}
+function renderAll(){renderDashboard();renderProducts();renderOrders();renderPurchases();renderExpenses();renderCustomers();if(!document.getElementById('page-reports').classList.contains('hidden'))renderReports()}
+function exportCSV(){const rows=[['Type','ID','Date','Category / Customer','Description / Product','Quantity','Amount','Cost','Profit'],...db.orders.map(o=>['Sale',o.id,o.date,o.customer,o.product,o.qty,o.total,o.cogs,o.total-o.cogs]),...db.expenses.map(x=>['Expense',x.id,x.date,x.category,x.description||x.note||'', '',x.amount,'',''])];const csv='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\n');downloadFile(csv,'medicare-sales-report.csv','text/csv;charset=utf-8')}
+function backupData(){downloadFile(JSON.stringify(db,null,2),'medicare-backup-'+today()+'.json','application/json');toast('ব্যাকআপ ডাউনলোড শুরু হয়েছে')}
+function downloadFile(content,name,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+document.getElementById('todayLabel').textContent=new Intl.DateTimeFormat('bn-BD',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date());document.getElementById('year').textContent=new Date().getFullYear();document.getElementById('reportDate').value=today();document.getElementById('dashDate').value=today();document.getElementById('dashWeek').value=currentWeekValue();
+renderAll();
+</script>
+</body></html>
